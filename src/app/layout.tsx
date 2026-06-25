@@ -1,30 +1,29 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Playfair_Display, Outfit } from "next/font/google"
 import "./globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
+  variable: "--font-display",
   subsets: ["latin"],
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  variable: "--font-body",
   subsets: ["latin"],
 })
 
 export const metadata: Metadata = {
   title: {
-    default: "Glamour Salon - Premium Beauty & Makeup Services",
-    template: "%s | Glamour Salon",
+    default: "NĒARY — Salon & Makeup Atelier | Phnom Penh",
+    template: "%s | NĒARY",
   },
   description:
-    "Experience premium beauty and makeup services at Glamour Salon. Book appointments with expert stylists and makeup artists.",
-  keywords: ["salon", "makeup", "beauty", "hair salon", "nail salon", "booking"],
+    "Where ancient Khmer elegance meets modern beauty. Premium salon and makeup artistry in Phnom Penh.",
+  keywords: ["salon", "makeup", "beauty", "Khmer", "Phnom Penh", "hairstylist", "nail salon", "bridal"],
   openGraph: {
-    title: "Glamour Salon - Premium Beauty & Makeup Services",
-    description: "Experience premium beauty and makeup services at Glamour Salon.",
-    url: "https://glamoursalon.vercel.app",
-    siteName: "Glamour Salon",
+    title: "NĒARY — Salon & Makeup Atelier",
+    description: "Where ancient Khmer elegance meets modern beauty.",
+    siteName: "NĒARY",
     locale: "en_US",
     type: "website",
   },
@@ -36,8 +35,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${playfair.variable} ${outfit.variable}`}>
+      <body className="min-h-screen flex flex-col antialiased">{children}</body>
     </html>
   )
 }

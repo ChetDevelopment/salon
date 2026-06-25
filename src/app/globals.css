@@ -1,30 +1,125 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #171717;
-  --color-primary: #000000;
-  --color-gold: #b8860b;
-  --color-gold-light: #daa520;
-  --color-cream: #faf8f5;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #fdf8f3;
+  --color-foreground: #161618;
+  --color-khmer-gold: #c5953a;
+  --color-khmer-gold-light: #dfb86a;
+  --color-khmer-gold-dark: #a87a28;
+  --color-khmer-burgundy: #7a1f2b;
+  --color-khmer-cream: #fdf8f3;
+  --color-khmer-charcoal: #161618;
+  --color-khmer-warm: #2c1810;
+  --color-khmer-silk: #f5efe6;
+  --color-khmer-teal: #1a4a4a;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Outfit", "Segoe UI", sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-weight: 300;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
 }
 
-.hero-gradient {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
-}
-
-.gold-gradient {
-  background: linear-gradient(135deg, #b8860b 0%, #daa520 50%, #b8860b 100%);
-}
-
-.section-padding {
-  @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+@layer utilities {
+  .khmer-border {
+    position: relative;
+  }
+  .khmer-border::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-khmer-gold), transparent);
+  }
+  .gold-text-gradient {
+    background: linear-gradient(135deg, #c5953a, #dfb86a, #c5953a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gold-gradient-bg {
+    background: linear-gradient(135deg, #c5953a, #dfb86a, #c5953a);
+  }
+  .hero-gradient-khmer {
+    background: linear-gradient(
+      165deg,
+      #161618 0%,
+      #2c1810 30%,
+      #1a0f0a 60%,
+      #161618 100%
+    );
+  }
+  .silk-texture {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(197, 149, 58, 0.03) 2px,
+      rgba(197, 149, 58, 0.03) 4px
+    );
+  }
+  .temple-motif {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L10 25h8v20h24V25h8L30 5z' fill='none' stroke='%23c5953a' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E");
+  }
+  .ornate-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .ornate-divider::before,
+  .ornate-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197, 149, 58, 0.4), transparent);
+  }
+  .ornate-divider .diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--color-khmer-gold);
+    transform: rotate(45deg);
+  }
+  .khmer-card {
+    background: white;
+    border: 1px solid rgba(197, 149, 58, 0.15);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .khmer-card:hover {
+    border-color: rgba(197, 149, 58, 0.4);
+    box-shadow: 0 20px 60px rgba(197, 149, 58, 0.1), 0 8px 20px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
 }
